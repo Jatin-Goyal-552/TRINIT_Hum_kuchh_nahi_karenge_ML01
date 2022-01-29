@@ -98,3 +98,6 @@ def predict_chat(request):
         pred,tag=chatbot_response(chat)
         # pred,tag=chatbot_response(chat)
     return HttpResponse(json.dumps({'ans':pred}), content_type="application/json")
+
+def xray(request):
+    return render(request,'corona_Xray_form.html')
