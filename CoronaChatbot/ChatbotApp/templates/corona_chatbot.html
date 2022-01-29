@@ -75,6 +75,7 @@
         font: 24px arial, sans-serif;
         height: 38px;
         width: 100%;
+        font-family: 'Font Awesome 5 Pro';
         margin-bottom: 30px;
     }
       
@@ -91,6 +92,7 @@
         color: #3123ff;
     }
     p {
+      font-family: 'Font Awesome 5 Pro';
       margin-top: 0;
       color: #000000;
       font-size: 24px;
@@ -114,10 +116,10 @@
             </div>
             <div class="collapse navbar-collapse navbar-right" id="myNavbar">
               <ul class="nav navbar-nav">
-                <li class=""><a href="#banner">Home</a></li>
-                <li class=""><a href="#service">Services</a></li>
+                <li class=""><a href="{% url 'home' %}">Home</a></li>
+                <!-- <li class=""><a href="#service">Services</a></li>
                 <li class=""><a href="#about">About</a></li>
-                <li class=""><a href="#contact">Contact</a></li>
+                <li class=""><a href="#contact">Contact</a></li> -->
               </ul>
             </div>
           </div>

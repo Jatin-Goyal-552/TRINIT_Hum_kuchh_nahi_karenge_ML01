@@ -16,6 +16,7 @@ import pandas as pd
 from nltk.stem import WordNetLemmatizer
 import keras
 import random
+from .forms import corona_xray_form
 
 
 # disease_model= pickle.load(open('C://Users//LENOVO//projects//Health Care Chatbot//notebook//Multinomial_classifier_disease.pkl','rb'))
@@ -100,4 +101,5 @@ def predict_chat(request):
     return HttpResponse(json.dumps({'ans':pred}), content_type="application/json")
 
 def xray(request):
-    return render(request,'corona_Xray_form.html')
+    form=corona_xray_form()
+    return render(request,'corona_Xray_form.html',{"form": form})
