@@ -18,12 +18,12 @@ import keras
 import random
 
 
-disease_model= pickle.load(open('C://Users//LENOVO//projects//Health Care Chatbot//notebook//Multinomial_classifier_disease.pkl','rb'))
-disease_tokenizer = pickle.load(open('C://Users//LENOVO//projects//Health Care Chatbot//notebook//tf_idf_vectorizer_disease.pkl','rb'))
-model = keras.models.load_model('C://Users//LENOVO//projects//Health Care Chatbot//notebook//chatbot_model.h5')
-intents = json.loads(open('C://Users//LENOVO//projects//Health Care Chatbot//data//intents.json').read())
-words = pickle.load(open('C://Users//LENOVO//projects//Health Care Chatbot//notebook//words.pkl','rb'))
-classes = pickle.load(open('C://Users//LENOVO//projects//Health Care Chatbot//notebook//classes.pkl','rb'))
+# disease_model= pickle.load(open('C://Users//LENOVO//projects//Health Care Chatbot//notebook//Multinomial_classifier_disease.pkl','rb'))
+# disease_tokenizer = pickle.load(open('C://Users//LENOVO//projects//Health Care Chatbot//notebook//tf_idf_vectorizer_disease.pkl','rb'))
+model = keras.models.load_model('C://Users//LENOVO//projects//TRI Nit Hackathon//chatbot//chatbot_model.h5')
+intents = json.loads(open('C://Users//LENOVO//projects//TRI Nit Hackathon//chatbot//intents.json').read())
+words = pickle.load(open('C://Users//LENOVO//projects//TRI Nit Hackathon//chatbot//words.pkl','rb'))
+classes = pickle.load(open('C://Users//LENOVO//projects//TRI Nit Hackathon//chatbot//classes.pkl','rb'))
 print("---------------------You are set to go.--------------------------")
 # flag=False
 # prec,desc,sym=False,False,False
@@ -87,3 +87,14 @@ def home(request):
 
 def chatbot(request):
     return render(request,'corona_chatbot.html')
+
+def predict_chat(request):
+    pred="please type something"
+    tag=""
+    global prec,desc,sym,flag,temp_disease,all_symptoms
+    if request.method == 'POST':
+        print('hello')
+        chat=request.POST['operation']
+        pred,tag=chatbot_response(chat)
+        # pred,tag=chatbot_response(chat)
+    return HttpResponse(json.dumps({'ans':pred}), content_type="application/json")
