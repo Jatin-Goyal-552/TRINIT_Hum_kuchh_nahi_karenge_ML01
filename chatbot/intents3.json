@@ -83,6 +83,7 @@
         "Describe me coronavirus?",
         "What is a covid?",
         "What is covid 19?"
+        "Corona is what?"
         ],
         "responses": [
           "Coronaviruses are a large family of viruses which may cause illness in animals or humans. ",
@@ -99,7 +100,8 @@
         "Describe What are the symptoms of COVID-19",
         "Describe me What are the symptoms of COVID-19?",
         "What is are covid symptoms?",
-        "What is covid 19 symptoms?"
+        "What is covid 19 symptoms?",
+        "Corona symptoms"
         ],
         "responses": [
           "The most common symptoms of COVID-19 are fever, tiredness, and dry cough. Some patients may have aches and pains, nasal congestion, runny nose, sore throat or diarrhea. These symptoms are usually mild and begin gradually. Some people become infected but don't develop any symptoms and don't feel unwell. Most people (about 80%) recover from the disease without needing special treatment.",
@@ -168,8 +170,7 @@
         "do i need to worry about corona?",
         "Should i be afraid of corona?",
         "Should i scare from covid",
-        "Is covid dangerous?",
-        " is covid harmful"
+        "Is covid dangerous?"
         ],
         "responses": [
           "Illness due to COVID-19 infection is generally mild, especially for children and young adults. However, it can cause serious illness: about 1 in every 5 people who catch it need hospital care but We can channel our concerns into actions to protect ourselves, our loved ones and our communities."
@@ -217,17 +218,17 @@
           "Yes , there is made in India vaccine for corona named covishield."
         ],
         "context": [""]
-      }
-      ,
+      },
       {
         "tag": "How are Covid-19 and influenza viruses different?",
         "patterns": [
         "Is covid-19 different from seasonal viruses",
-        " is covid same as other viruses",
-        "Difference between covid-19 and seasonal viruses"
+      
+        "Difference between covid-19 and seasonal viruses",
+        "Is Covid-19 dangerous."
         ],
         "responses": [
-          "Mortality for COVID-19 appears higher then for other viruses."
+          "Mortality for COVID-19 appears higher then for influenza."
         ],
         "context": [""]
       },
@@ -241,8 +242,7 @@
         "Is there is any harm for tabacco and smokers?"
         ],
         "responses": [
-          "Yes,tabacco and smokers are not safe.",
-          "Yes,It is dangerous for tabacco and smokers."
+          "Yes,tabacco and smokers are not safe."
         ],
         "context": [""]
       },
@@ -252,7 +252,7 @@
         "Can I touch newborn baby if i am covid-19 positive?",
         "Is it safe for newborn baby?",
         "Can I hold my newborn baby?",
-        "Can I touch and hold my newborn baby?"
+        "Can I touch and hold my newborn bany?"
         ],
         "responses": [
           "Yes. Close contact and early, exclusive breastfeeding helps a baby to thrive."
@@ -274,12 +274,10 @@
         "tag": "unborn baby?",
         "patterns": [
         "Can women with covid-19 is harmfull for unborn baby?",
-        "Can covid-19 be passed from a women to her unborn baby?",
-        "Is corona harmful for unborn baby",
-        "Should i worry about my unborn baby?"
+        "Can covid-19 be passed from a women to her newborn baby?"
         ],
         "responses": [
-          "There is also no evidence of vertical transmission, which refers to the ability of the virus to pass to your unborn baby during pregnancy."
+          "Currently no such record has found and we not sure about it."
         ],
         "context": [""]
       },
@@ -306,7 +304,7 @@
         "What can i do to incease to my imunity?"
         ],
         "responses": [
-          "Take vaccination, eat healty food, drink more water and excersie regularly"
+          "Take vaccinations,eat healty food,Drink more water,Excersie regularly"
         ],
         "context": [""]
       },
@@ -343,7 +341,7 @@
         "corona positive"
         ],
         "responses": [
-          "Self isolate, wear mask, avoid contact with others, eat healthy food and do some yoga."
+          "self isolate,wear mask,Avoid contect with others,eat healthy food.Do some yoga."
         ],
         "context": [""]
       },
@@ -362,9 +360,8 @@
       {
         "tag": "Quarantine",
         "patterns": [
-        "how muchh is Covid 19 quarantine",
-        "for how many days is quarantine duration",
-        "quarantine period"
+        "Covid-19 quarantine",
+        "quarantine duration"
         ],
         "responses": [
           "normally WHO suggest 14 days quarantine."
@@ -372,5 +369,7 @@
         "context": [""]
       }
       
+      
+     
     ]
   }

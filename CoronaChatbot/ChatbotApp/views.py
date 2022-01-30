@@ -25,7 +25,7 @@ import os
 from time import sleep
 # disease_model= pickle.load(open('C://Users//LENOVO//projects//Health Care Chatbot//notebook//Multinomial_classifier_disease.pkl','rb'))
 # disease_tokenizer = pickle.load(open('C://Users//LENOVO//projects//Health Care Chatbot//notebook//tf_idf_vectorizer_disease.pkl','rb'))
-model = keras.models.load_model('C://Users//LENOVO//projects//TRI Nit Hackathon//chatbot//chatbot_model.h5')
+model = keras.models.load_model('C://Users//LENOVO//projects//TRI Nit Hackathon//chatbot//chatbot_model3.h5')
 intents = json.loads(open('C://Users//LENOVO//projects//TRI Nit Hackathon//chatbot//intents.json').read())
 words = pickle.load(open('C://Users//LENOVO//projects//TRI Nit Hackathon//chatbot//words.pkl','rb'))
 classes = pickle.load(open('C://Users//LENOVO//projects//TRI Nit Hackathon//chatbot//classes.pkl','rb'))
@@ -49,7 +49,8 @@ def clean(text):
     return text
 
 def clean_up_sentence(sentence):
-    ignore_words=['covid','corona','covid-19','19']
+    ignore_words=['covid','corona','covid-19','19','breastfeed','newborn','unborn','viruses','viruse','varient']
+
     lemmatizer = WordNetLemmatizer()
     sentence_words = nltk.word_tokenize(sentence)
     sentence_words2=[]
