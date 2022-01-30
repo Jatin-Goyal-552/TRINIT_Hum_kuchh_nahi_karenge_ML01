@@ -43,3 +43,4 @@ The problem CoBot solves is now a days we have seen that in many doctor and fron
  Link- https://www.kaggle.com/bachrr/covid-chest-xray/code
 # Image
 <img src="Screenshot (243).png"></img>
+<img src="Screenshot (244).png"></img>
