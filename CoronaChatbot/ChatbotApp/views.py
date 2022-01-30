@@ -17,6 +17,7 @@ from nltk.stem import WordNetLemmatizer
 import keras
 import random
 from .forms import corona_xray_form
+from textblob import TextBlob
 
 
 # disease_model= pickle.load(open('C://Users//LENOVO//projects//Health Care Chatbot//notebook//Multinomial_classifier_disease.pkl','rb'))
@@ -41,8 +42,16 @@ def clean(text):
     return text
 
 def clean_up_sentence(sentence):
+    ignore_words=['covid','corona','covid-19','19']
     lemmatizer = WordNetLemmatizer()
     sentence_words = nltk.word_tokenize(sentence)
+    sentence_words2=[]
+    for a in sentence_words:
+        if a.lower() not in ignore_words:
+            sentence_words2.append(str(TextBlob(a).correct()))
+        else:
+            sentence_words2.append(a)
+    sentence_words=sentence_words2 
     sentence_words = [lemmatizer.lemmatize(word.lower()) for word in sentence_words]
     return sentence_words
 
@@ -102,4 +111,51 @@ def predict_chat(request):
 
 def xray(request):
     form=corona_xray_form()
+    
+    if request.method == 'POST':
+        form=corona_xray_form(request.POST,request.FILES)
+        if form.is_valid():
+            
+            form.save()
+        else:
+            print(form.errors)
+        # url=str(form.image)
+        url=str(form.cleaned_data["image"])
+        print("url",url)
+        # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        # url="http://localhost:8000/media/"+url
+        # sleep(5)
+        # model=keras.models.load_model("corona_model.h5")
+        # image_location=os.path.join("media",url)
+        # img = load_img(image_location, grayscale=False, target_size=(150, 150,3))
+        # # response = requests.get(url)
+        # # img = Image.open(BytesIO(response.content))
+        # img = img_to_array(img)
+        # img= img.reshape(1, 150, 150, 3)
+        # img = img.astype('float32')
+        # img = img / 255.0
+        # # print(img)
+        
+        # pred=model.predict(img)[0][0]
+        # print("pred",pred)
+        # if pred>0.5:
+        #     prediction="This image do not have corona virus."
+        # else:
+        #     prediction="This image have corona virus."
+        # print("image_pic_url",brain_mri)
+        corona = corona_xray.objects.all()
+        # mri=brain.filter(brain_mri_id=5)
+        # print("mri",corona)
+        # print("mri",mri)
+        sorted_xray= corona_xray.objects.order_by('corona_id').reverse()
+        print("*****************************") 
+        print("sorted",sorted_xray[0].corona_id)
+        # print("image_pic_url",brain_mri)
+        # image_location_path=os.path.join(BASE_DIR,"media",url)
+        # print("image_location_",image_location_path)
+        print("nnnnn")
+        last=sorted_xray[0].corona_id
+        xray=corona.filter(corona_id=last)
+        print("mri",xray)
+        return render(request, 'corona_xray_result.html',{"prediction": "hello","xray":xray})
     return render(request,'corona_Xray_form.html',{"form": form})
