@@ -98,6 +98,19 @@
       font-size: 24px;
       margin-bottom: 1rem;
   }
+  #output {
+    background-color:#F9F9F9;
+    padding:10px;
+    width: 100%;
+    margin-top:20px;
+    line-height:30px;
+}
+.hide {
+    display:none;
+}
+.show {
+    display:block;
+}
 </style>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
   <!--banner-->
@@ -147,6 +160,8 @@
     <div id='bodybox'>
         <div id='chatborder' style="overflow: scroll;">
           <input type="text" name="chat" id="chatbox" placeholder="Hi there! Type here to talk to me." onfocus="placeHolder()">
+          <!-- <p><button type="button" onclick="runSpeechRecognition()">Speech to Text</button> &nbsp; <span id="action"></span></p>
+        <div id="output" class="hide"></div> -->
           <p id="chatlog1" class="chatlog">&nbsp;</p>
           <p id="chatlog2" class="chatlog">&nbsp;</p>
           <p id="chatlog3" class="chatlog">&nbsp;</p>
@@ -206,19 +221,7 @@ ans=''
 //****************************************************************
 //****************************************************************
 //edit this function to change what the chatbot says
-function chatbotResponse() {
-talking = true;
-botMessage = "I'm confused"; //the default message
 
-if (lastUserMessage === 'hi' || lastUserMessage =='hello') {
-  const hi = ['hi','howdy','hello']
-  botMessage = hi[Math.floor(Math.random()*(hi.length))];;
-}
-
-if (lastUserMessage === 'name') {
-  botMessage = 'My name is ' + botName;
-}
-}
 //****************************************************************
 //****************************************************************
 //****************************************************************
@@ -231,33 +234,36 @@ if (lastUserMessage === 'name') {
 //
 //this runs each time enter is pressed.
 //It controls the overall input and output
-function newEntry(ans) {
-//if the message from the user isn't empty then run 
-if (document.getElementById("chatbox").value != "") {
-  //pulls the value from the chatbox ands sets it to lastUserMessage
-  lastUserMessage = document.getElementById("chatbox").value;
-  //sets the chat box to be clear
-  document.getElementById("chatbox").value = "";
-  //adds the value of the chatbox to the array messages
-  person_name="You"
-  messages.push("<b>"+person_name+": </b> "+lastUserMessage);
-  //Speech(lastUserMessage);  //says what the user typed outloud
-  //sets the variable botMessage in response to lastUserMessage
-  //chatbotResponse();
-  console.log("ans hello",messages)
-  botMessage=ans
-  //add the chatbot's name and message to the array messages
-  messages.push("<b>" + botName + ":</b> " + botMessage);
-  // says the message using the text to speech function written below
-  Speech(botMessage);
-  //outputs the last few array elements of messages to html
-  for (var i = 1; i < 24; i++) {
-    if (messages[messages.length - i])
-      document.getElementById("chatlog" + i).innerHTML = messages[messages.length - i];
-  }
+function runSpeechRecognition() {
+  // get output div reference
+  var output = document.getElementById("output");
+  // get action element reference
+  var action = document.getElementById("action");
+      // new speech recognition object
+      var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+      var recognition = new SpeechRecognition();
+  
+      // This runs when the speech recognition service starts
+      recognition.onstart = function() {
+          action.innerHTML = "<small>listening, please speak...</small>";
+      };
+      
+      recognition.onspeechend = function() {
+          action.innerHTML = "<small>stopped listening, hope you are done...</small>";
+          recognition.stop();
+      }
+    
+      // This runs when the speech recognition service returns result
+      recognition.onresult = function(event) {
+          var transcript = event.results[0][0].transcript;
+          var confidence = event.results[0][0].confidence;
+          output.innerHTML = "<b>Text:</b> " + transcript + "<br/> <b>Confidence:</b> " + confidence*100+"%";
+          output.classList.remove("hide");
+      };
+    
+       // start recognition
+       recognition.start();
 }
-}
-
 //text to Speech
 //https://developers.google.com/web/updates/2014/01/Web-apps-that-talk-Introduction-to-the-Speech-Synthesis-API
 function Speech(say) {

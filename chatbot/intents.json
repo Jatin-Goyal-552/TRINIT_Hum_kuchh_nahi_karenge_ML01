@@ -325,10 +325,10 @@
       {
         "tag": "Varient",
         "patterns": [
-        "What is current varient of corona virus",
-        "how many varient of corona virus has come",
-        "corona varient",
-        "name corona varient"
+        "What is current variants of corona virus",
+        "how many variant of corona virus has come",
+        "corona variant",
+        "name corona variant"
         ],
         "responses": [
           "Covid-19 varients are - Delta,Alpha,Gamma,Beta. Now currently Omicron varient is spreding in the whole world."

@@ -23,9 +23,13 @@ import cv2
 from collections import Counter
 import os
 from time import sleep
+from django.core.mail import send_mail
+from django.conf import settings
+from django.shortcuts import redirect
+
 # disease_model= pickle.load(open('C://Users//LENOVO//projects//Health Care Chatbot//notebook//Multinomial_classifier_disease.pkl','rb'))
 # disease_tokenizer = pickle.load(open('C://Users//LENOVO//projects//Health Care Chatbot//notebook//tf_idf_vectorizer_disease.pkl','rb'))
-model = keras.models.load_model('C://Users//LENOVO//projects//TRI Nit Hackathon//chatbot//chatbot_model3.h5')
+model = keras.models.load_model('C://Users//LENOVO//projects//TRI Nit Hackathon//chatbot//chatbot_model4.h5')
 intents = json.loads(open('C://Users//LENOVO//projects//TRI Nit Hackathon//chatbot//intents.json').read())
 words = pickle.load(open('C://Users//LENOVO//projects//TRI Nit Hackathon//chatbot//words.pkl','rb'))
 classes = pickle.load(open('C://Users//LENOVO//projects//TRI Nit Hackathon//chatbot//classes.pkl','rb'))
@@ -101,6 +105,14 @@ def chatbot_response(msg):
     return res,tag
 
 def home(request):
+    # if request.method == 'POST':
+    #     print("---------------------------------")
+    #     name = request.POST.get('name')
+    #     email = request.POST.get('email')
+    #     subject = request.POST.get('subject')
+    #     message = request.POST.get('message')
+    #     print(send_mail(subject, message,settings.EMAIL_HOST_USER, "goyaljatin310@gmail.com", fail_silently=False))
+    #     return render(request,'home.html')
     return render(request,'home.html')
 
 def chatbot(request):
