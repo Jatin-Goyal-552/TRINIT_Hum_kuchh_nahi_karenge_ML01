@@ -1,4 +1,9 @@
 # TRINIT_Hum_kuchh_nahi_karenge_ML01
+
+# Document Link
+https://github.com/Jatin-Goyal-552/TRINIT_Hum_kuchh_nahi_karenge_ML01/blob/main/hum_kuchh_nahi_karenge_final_review.pdf
+# Video Link
+
 # CoBot
 A smart Chat bot that can help to know about corona virus and Make prediction of corona using X-ray.
 
