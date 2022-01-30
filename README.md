@@ -41,4 +41,5 @@ The problem CoBot solves is now a days we have seen that in many doctor and fron
 # Dataset
 - Data set we are using in our project - 
  Link- https://www.kaggle.com/bachrr/covid-chest-xray/code
-
+#Image
+<img src="Screenshot (243).png></img>
